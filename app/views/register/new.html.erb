@@ -1,0 +1,38 @@
+<%= render "navbar" %>
+
+    <div class ="container rounded-5 card col-sm-4 my-4 py-2">
+    <%= form_with model: @user, url: sign_up_path do |form| %>
+        <% if @user.errors.any? %>
+            <div class = "alert alert-danger">
+                <% @user.errors.full_messages.each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
+            </div>
+        <% end %>
+        <h2 class="text-center py-2">Register</h2>
+        <div class = "mb-3">
+            <%= form.label :username %> 
+            <%= form.text_field :username, class: "form-control", placeholder: "Username" %>
+        </div>
+        
+        <div class = "mb-3">
+            <%= form.label :email %> 
+            <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+        
+        <div class = "mb-3">
+            <%= form.label :password %> 
+            <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+        </div>
+
+        <div class = "mb-3" >
+            <%= form.label :password_confirmation %> 
+            <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+        </div>
+
+        <div class = "mb-3 text-center">
+            <%= form.submit "Register", class: "btn btn-success" %>
+        </div>
+
+    <% end %>
+    </div>

@@ -1,0 +1,9 @@
+<%= render "navbar" %>
+
+<h1 class="text-center">GiftCard</h1>
+<div class = "mb-3 d-flex align-item-center justify-content-center" >
+    <% if Current.user %>
+    Logged in as: <%= Current.user.email %>
+        <%= button_to "Logout", logout_path, class: "btn btn-danger",  method: :delete %>
+    <% end %>
+</div>

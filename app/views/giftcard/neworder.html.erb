@@ -1,0 +1,58 @@
+<%= render "navbar" %>
+
+<div class ="container rounded-5 card col-sm-6 my-4 py-2">
+<%= form_with model: @giftcoupon, url: new_order_path do |form| %>
+  <h2 class="text-center p-4">Create New Order</h2>
+  <div class="row">
+    <div class="col-sm-6 my-2">
+      <label>Date: </label>
+      <%= Time.now.strftime("%F")%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3 col-sm-6 ">
+        <label>Recepient First Name</label>
+        <%= form.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    </div>
+
+    <div class="mb-3 col-sm-6 ">
+        <label>Recepient Last Name</label>
+        <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3 col-sm-6 ">
+        <label>Gift Card Value(INR)</label>
+        <%= form.number_field :gift_card_value, class: "form-control", placeholder: "Gift Card Value", id: :val, onchange: "fun()" %>
+    </div>
+
+    <div class="mb-3 col-sm-6 ">
+        <label>Amount Payable(5% Commision Rate)</label> 
+        <%= form.number_field :total_amount, step: :any, class: "form-control", placeholder: "Amount Payable", id: :res %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="mb-3 col-sm-6 ">
+        <%= form.label :address %> 
+        <%= form.text_field :address, class: "form-control", placeholder: "Recepient Address" %>
+    </div>
+
+    <div class="mb-3 col-sm-6 ">
+        <label>Racepient Mobile Number</label>
+        <%= form.text_field :mobile_no, class: "form-control", placeholder: "Recepient Mobile Number" %>
+    </div>
+  </div>
+  <div class = "mb-3 d-flex align-item-center justify-content-center">
+    <%= form.submit "Place Order", class: "btn btn-success" %>
+  </div>
+<% end %>
+</div>
+<script>
+function fun() {
+  num = document.getElementById("val").value;
+  num= parseInt(num);
+  result = num*(0.05);
+  document.getElementById("res").value=result;
+}
+</script>

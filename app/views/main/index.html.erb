@@ -1,0 +1,35 @@
+    <html>
+    <head>
+        <style>
+            body {
+                background-image: url(https://i.pinimg.com/originals/5c/94/a5/5c94a5c141f42a7d26ce3fa5c6d734ad.gif);
+                height: auto; 
+                background-repeat: no-repeat; 
+                background-size: cover;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #333;
+                background-color: #fff;
+            }
+            h1{
+                font-size: 40px;
+                font-weight: bold;
+                color: #fff;
+                text-align: center;
+                margin-top: 50px;
+                text-align: center;
+            }
+        </style>
+    </head>
+        <body>
+            <%= render "navbar" %>  
+            <div class = "mb-4 text-align-center" >
+                <h1>Welcome to Giftcard Management System</h1>
+                <% if Current.user %>
+                    Logged in as: <%= Current.user.email %>
+                    <%= button_to "Logout", logout_path, class: "btn btn-danger",  method: :delete %>
+                <% end %>
+            </div>
+        </body>
+    </html>
